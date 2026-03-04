@@ -16,6 +16,8 @@ import {ComplexNav, ContentFeed, styles} from './PageLayoutCaseStudy.shared'
  * via a `data-dragging` attribute during drag — isolating the pane and content
  * subtrees so the browser can skip their internal layout during resize.
  *
+ * @see {@link https://github.com/primer/react/pull/7349}
+ *
  * ---
  * **What to watch in the Performance Panel:**
  * - **Frame Time** — elevated during drag, especially with many items
@@ -88,7 +90,7 @@ function NoContainmentResize({
   return (
     <div>
       <div className={styles.description}>
-        <h3>Phase 4: No CSS Containment During Drag</h3>
+        <h3>Phase 3: No CSS Containment During Drag</h3>
         <p>
           Drag uses direct DOM (good), but without <code>contain: strict</code>, changing the pane width triggers a{' '}
           <strong>full layout recalculation</strong> of every child element on every frame.
@@ -98,7 +100,7 @@ function NoContainmentResize({
             <strong>Problem:</strong> Flex container width change forces relayout of all descendants
           </li>
           <li>
-            <strong>PR #7349 fix:</strong> Apply <code>contain: strict</code> via <code>data-dragging</code> attribute
+            <strong><a href="https://github.com/primer/react/pull/7349" target="_blank" rel="noreferrer">PR #7349</a> fix:</strong> Apply <code>contain: strict</code> via <code>data-dragging</code> attribute
             during drag — isolates subtrees, making layout cost O(1) regardless of child count
           </li>
         </ul>
@@ -124,7 +126,7 @@ function NoContainmentResize({
 NoContainmentResize.displayName = 'NoContainmentResize'
 
 const meta = preview.meta({
-  title: 'Case Study: PageLayout/4 — No Containment',
+  title: 'Case Study: PageLayout/3 — No Containment',
   component: NoContainmentResize,
 })
 export default meta

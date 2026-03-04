@@ -1,14 +1,13 @@
 import {useCallback, useEffect, useRef, useState} from 'react'
 
 import preview from '../.storybook/preview'
-import {ComplexNav, HeavyContentItem, styles} from './PageLayoutCaseStudy.shared'
+import {ComplexNav, ContentFeed, styles} from './PageLayoutCaseStudy.shared'
 
 /**
  * **Stress test** — The fully optimized approach pushed to extreme DOM sizes.
  *
- * This story uses 5–8× nav sections (85–136 items) and 80–150 content cards
- * with nested labels, badges, and metadata — simulating a worst-case page like
- * a large repository's file browser or a PR with 100+ changed files.
+ * This story uses 5–10× nav sections (85–170 items) and 80–200 diff files
+ * with inline review comments — simulating a worst-case PR diff view.
  *
  * Even at this scale, the optimized approach maintains smooth drag because
  * CSS containment isolates the expensive subtrees. The browser skips internal
@@ -105,9 +104,9 @@ function StressTestOptimized({contentItems = 80, navMultiplier = 5}: {contentIte
       <div className={styles.description}>
         <h3>Stress Test: Optimized + Extreme DOM</h3>
         <p>
-          The optimized approach at maximum scale — <strong>~{navMultiplier * 17} nav items</strong> and{' '}
-          <strong>{contentItems} rich content cards</strong>. CSS containment isolates subtrees, keeping layout cost
-          constant during drag regardless of child count.
+          The optimized approach at maximum scale — <strong>~{navMultiplier * 9} nav items</strong> and{' '}
+          <strong>{contentItems} diff files with inline comments</strong>. CSS containment isolates subtrees, keeping
+          layout cost constant during drag regardless of child count.
         </p>
         <ul>
           <li>Compare FPS with &ldquo;No Containment&rdquo; at similar item counts</li>
@@ -120,8 +119,8 @@ function StressTestOptimized({contentItems = 80, navMultiplier = 5}: {contentIte
       <div className={styles.infoBar}>
         <span className={styles.badgeInfo}>Stress Test</span>
         <span>Width: {displayWidth}px</span>
-        <span>Nav: ~{navMultiplier * 17} items</span>
-        <span>Content: {contentItems} cards</span>
+        <span>Nav: ~{navMultiplier * 9} items</span>
+        <span>Content: {contentItems} diff files</span>
       </div>
       <div className={styles.layout}>
         <div ref={paneRef} className={styles.pane} style={{width: 300}}>
@@ -129,9 +128,7 @@ function StressTestOptimized({contentItems = 80, navMultiplier = 5}: {contentIte
         </div>
         <div ref={dividerRef} className={styles.divider} />
         <div ref={contentRef} className={styles.content}>
-          {Array.from({length: contentItems}, (_, i) => (
-            <HeavyContentItem key={i} index={i} />
-          ))}
+          <ContentFeed count={contentItems} heavy />
         </div>
       </div>
     </div>
@@ -141,7 +138,7 @@ function StressTestOptimized({contentItems = 80, navMultiplier = 5}: {contentIte
 StressTestOptimized.displayName = 'StressTestOptimized'
 
 const meta = preview.meta({
-  title: 'Case Study: PageLayout/6 — Stress Test',
+  title: 'Case Study: PageLayout/5 — Stress Test',
   component: StressTestOptimized,
 })
 export default meta

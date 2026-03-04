@@ -15,6 +15,8 @@ import {ComplexNav, ContentFeed, styles} from './PageLayoutCaseStudy.shared'
  * This is the pattern that PR #7307 (Dec 15, 2025) eliminated by switching to
  * direct DOM manipulation via `style.setProperty()` during drag.
  *
+ * @see {@link https://github.com/primer/react/pull/7307}
+ *
  * ---
  * **What to watch in the Performance Panel:**
  * - **React Updates** — fires on every pixel of drag
@@ -76,7 +78,7 @@ function NaiveStateResize({
             <strong>Problem:</strong> React re-renders both pane + content children on every pixel
           </li>
           <li>
-            <strong>PR #7307 fix:</strong> Switch to <code>element.style.setProperty()</code> during drag, defer React
+            <strong><a href="https://github.com/primer/react/pull/7307" target="_blank" rel="noreferrer">PR #7307</a> fix:</strong> Switch to <code>element.style.setProperty()</code> during drag, defer React
             state update to <code>pointerup</code>
           </li>
         </ul>

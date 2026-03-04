@@ -7,17 +7,17 @@ import {ComplexNav, ContentFeed, styles} from './PageLayoutCaseStudy.shared'
  * **After (Feb 2026):** The fully optimized version with all fixes applied:
  *
  * 1. **Direct DOM manipulation** — `style.setProperty()` during drag, no
- *    React state updates until `pointerup` (PR #7307)
+ *    React state updates until `pointerup` ({@link https://github.com/primer/react/pull/7307 PR #7307})
  * 2. **rAF coalescing** — multiple `pointermove` events per frame are collapsed
- *    to a single DOM update (PR #7307)
+ *    to a single DOM update ({@link https://github.com/primer/react/pull/7307 PR #7307})
  * 3. **CSS containment** — `contain: strict` + `content-visibility: auto` on
- *    pane and content during drag, isolating subtrees (PR #7349)
+ *    pane and content during drag, isolating subtrees ({@link https://github.com/primer/react/pull/7349 PR #7349})
  * 4. **Viewport-based width calc** — uses `window.innerWidth` + breakpoint
- *    check instead of `getComputedStyle` (PR #7532)
+ *    check instead of `getComputedStyle` ({@link https://github.com/primer/react/pull/7532 PR #7532})
  * 5. **Pointer capture** — reliable drag tracking even outside the handle,
- *    with proper cleanup on lost capture (PR #7307)
+ *    with proper cleanup on lost capture ({@link https://github.com/primer/react/pull/7307 PR #7307})
  * 6. **Relative delta positioning** — calculates width from drag-start offset,
- *    immune to scrollbar appearance/disappearance during drag (PR #7307)
+ *    immune to scrollbar appearance/disappearance during drag ({@link https://github.com/primer/react/pull/7307 PR #7307})
  *
  * ---
  * **What to watch in the Performance Panel:**
@@ -163,7 +163,7 @@ function OptimizedResize({
       <div className={styles.infoBar}>
         <span className={styles.badgeSuccess}>Optimized</span>
         <span>Width: {displayWidth}px</span>
-        <span>Drag to resize — compare metrics with Stories 1–4</span>
+        <span>Drag to resize — compare metrics with Stories 1–3</span>
       </div>
       <div className={styles.layout}>
         <div ref={paneRef} className={styles.pane} style={{width: 300}}>
@@ -181,7 +181,7 @@ function OptimizedResize({
 OptimizedResize.displayName = 'OptimizedResize'
 
 const meta = preview.meta({
-  title: 'Case Study: PageLayout/5 — Optimized',
+  title: 'Case Study: PageLayout/4 — Optimized',
   component: OptimizedResize,
 })
 export default meta
