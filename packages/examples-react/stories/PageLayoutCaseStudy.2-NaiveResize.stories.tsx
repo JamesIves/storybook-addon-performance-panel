@@ -78,8 +78,14 @@ function NaiveStateResize({
             <strong>Problem:</strong> React re-renders both pane + content children on every pixel
           </li>
           <li>
-            <strong><a href="https://github.com/primer/react/pull/7307" target="_blank" rel="noreferrer">PR #7307</a> fix:</strong> Switch to <code>element.style.setProperty()</code> during drag, defer React
-            state update to <code>pointerup</code>
+            <strong>
+              <a href="https://github.com/primer/react/pull/7307" target="_blank" rel="noreferrer">
+                PR #7307
+              </a>{' '}
+              fix:
+            </strong>{' '}
+            Switch to <code>element.style.setProperty()</code> during drag, defer React state update to{' '}
+            <code>pointerup</code>
           </li>
         </ul>
       </div>

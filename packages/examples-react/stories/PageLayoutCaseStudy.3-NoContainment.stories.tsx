@@ -100,8 +100,14 @@ function NoContainmentResize({
             <strong>Problem:</strong> Flex container width change forces relayout of all descendants
           </li>
           <li>
-            <strong><a href="https://github.com/primer/react/pull/7349" target="_blank" rel="noreferrer">PR #7349</a> fix:</strong> Apply <code>contain: strict</code> via <code>data-dragging</code> attribute
-            during drag — isolates subtrees, making layout cost O(1) regardless of child count
+            <strong>
+              <a href="https://github.com/primer/react/pull/7349" target="_blank" rel="noreferrer">
+                PR #7349
+              </a>{' '}
+              fix:
+            </strong>{' '}
+            Apply <code>contain: strict</code> via <code>data-dragging</code> attribute during drag — isolates subtrees,
+            making layout cost O(1) regardless of child count
           </li>
         </ul>
       </div>
